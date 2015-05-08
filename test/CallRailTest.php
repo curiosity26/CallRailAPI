@@ -13,5 +13,15 @@ class CallRailTest extends PHPUnit_Framework_TestCase {
 
     $companies = $api->companies();
     $this->assertNotEmpty($companies);
+    $this->assertInstanceOf('\\RESTKit\\Collection\\Collection', $companies->companies);
+
+    $id = $companies->companies->current()->id;
+
+    $company = $api->companies($id);
+
+    $this->assertInstanceOf(
+      '\\RESTKit\\DynamicDataObject', $company
+    );
+
   }
 }

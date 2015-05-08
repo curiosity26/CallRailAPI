@@ -67,14 +67,21 @@ class CallRail {
     }
   }
 
-  public function companies($page = 1, $per_page = 100) {
+  public function companies($company_id = null, $page = 1, $per_page = 100) {
     $params = array('page' => $page, 'per_page' => min($per_page, 1000));
 
+    if (null !== $company_id) {
+      return $this->sendRequest("companies/$company_id", $params);
+    }
     return $this->sendRequest('companies', $params);
   }
 
-  public function users($page = 1, $per_page = 100) {
+  public function users($user_id = null, $page = 1, $per_page = 100) {
     $params = array('page' => $page, 'per_page' => min($per_page, 1000));
+
+    if (null !== $user_id) {
+      return $this->sendRequest("users/$user_id", $params);
+    }
 
     return $this->sendRequest('users', $params);
   }
