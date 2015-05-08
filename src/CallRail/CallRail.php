@@ -58,7 +58,7 @@ class CallRail {
     $url = self::getFunctionUrl($function, $params);
     $this->request->setUrl($url);
     $response = $this->request->send();
-    var_dump($url);
+
     if ($response->isSuccess()) {
       return $response->getBody();
     }
