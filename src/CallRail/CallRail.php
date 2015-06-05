@@ -38,6 +38,8 @@ class CallRail {
 
   public function setToken($token) {
     $this->client->setAccessToken("token=$token");
+
+    return $this;
   }
 
   static public function getFunctionUrl($function, $parameters = array()) {
@@ -54,21 +56,28 @@ class CallRail {
     return $url;
   }
 
+  /**
+   * @param $function
+   * @param array $params
+   * @return \RESTKit\Response\Response
+   */
   protected function sendRequest($function, $params = array()) {
     $url = self::getFunctionUrl($function, $params);
     $this->request->setUrl($url);
     $response = $this->request->send();
 
-    if ($response->isSuccess()) {
-      return $response->getBody();
-    }
-    else {
-      return array();
-    }
+    return $response;
   }
 
+  /**
+   * @param null $company_id
+   * @param int $page
+   * @param int $per_page
+   * @return \CallRail\Company\Response\CompanyResponse
+   */
   public function companies($company_id = null, $page = 1, $per_page = 100) {
     $params = array('page' => $page, 'per_page' => min($per_page, 1000));
+    $this->request->setResponseClass('CallRail\\Company\\Response\\CompanyResponse');
 
     if (null !== $company_id) {
       return $this->sendRequest("companies/$company_id", $params);
@@ -76,8 +85,15 @@ class CallRail {
     return $this->sendRequest('companies', $params);
   }
 
+  /**
+   * @param null $user_id
+   * @param int $page
+   * @param int $per_page
+   * @return \CallRail\User\Response\UserResponse
+   */
   public function users($user_id = null, $page = 1, $per_page = 100) {
     $params = array('page' => $page, 'per_page' => min($per_page, 1000));
+    $this->request->setResponseClass('CallRail\\User\\Response\\UserResponse');
 
     if (null !== $user_id) {
       return $this->sendRequest("users/$user_id", $params);
@@ -86,8 +102,16 @@ class CallRail {
     return $this->sendRequest('users', $params);
   }
 
+  /**
+   * @param null $company_id
+   * @param int $page
+   * @param int $per_page
+   * @return \CallRail\Source\Response\SourceResponse
+   */
   public function sources($company_id = null, $page = 1, $per_page = 100) {
     $params = array('page' => $page, 'per_page' => min($per_page, 1000));
+    $this->request->setResponseClass('CallRail\\Source\\Response\\SourceResponse');
+
     if (null !== $company_id) {
       $params['company_id'] = $company_id;
     }

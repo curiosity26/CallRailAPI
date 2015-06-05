@@ -17,7 +17,7 @@
   },
   "require": {
     "php": ">= 5.4",
-    "curiosity26/restkit": "1.0.*"
+    "curiosity26/restkit": "~1.0.9"
   },
   "require-dev": {
       "phpunit/phpunit": "4.4.*"
@@ -27,11 +27,11 @@
       "type": "package",
       "package": {
         "name": "curiosity26/restkit",
-        "version": "v1.0.8",
+        "version": "v1.0.9",
         "source": {
           "url": "https://github.com/curiosity26/RESTKit.git",
           "type": "git",
-          "reference": "v1.0.8"
+          "reference": "v1.0.9"
         }
       }
     }
