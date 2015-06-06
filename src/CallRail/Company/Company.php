@@ -17,12 +17,10 @@ use RESTKit\Properties\StringProperty;
 
 class Company extends DynamicDataObject {
 
-  public function __construct(array $values = array(), RESTClientInterface $client = null) {
+  public function initiate() {
 
-    $this->createProperty('name', new StringProperty());
-    $this->createProperty('time_zone', new TimeZoneProperty(TimeZone::EASTERN_TIME));
-
-    parent::__construct($values, $client);
+    $this->createProperty('name', new StringProperty())
+      ->createProperty('time_zone', new TimeZoneProperty(TimeZone::EASTERN_TIME));
 
   }
 

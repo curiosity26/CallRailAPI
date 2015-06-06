@@ -9,16 +9,16 @@
 namespace CallRail\Source;
 
 
-use RESTKit\Client\RESTClientInterface;
+use CallRail\Properties\PhoneNumberProperty;
 use RESTKit\DynamicDataObject;
-use RESTKit\Properties\ClassProperty;
+use RESTKit\Properties\ArrayProperty;
 use RESTKit\Properties\DateTimeProperty;
 use RESTKit\Properties\IntegerProperty;
 use RESTKit\Properties\StringProperty;
 
 class Source extends DynamicDataObject {
 
-  public function __construct(array $values = array(), RESTClientInterface $client = null) {
+  public function initiate() {
 
     $this->createProperty('id', new IntegerProperty())
       ->createProperty('name', new StringProperty())
@@ -26,10 +26,8 @@ class Source extends DynamicDataObject {
       ->createProperty('disabled_at', new DateTimeProperty())
       ->createProperty('company_name', new StringProperty())
       ->createProperty('company_id', new IntegerProperty())
-      ->createProperty('destination_number', new StringProperty())
-      ->createProperty('tracking_numbers', new ClassProperty('Array'))
+      ->createProperty('destination_number', new PhoneNumberProperty())
+      ->createProperty('tracking_numbers', new ArrayProperty())
       ->createProperty('type', new StringProperty());
-
-    parent::__construct($values, $client);
   }
 }

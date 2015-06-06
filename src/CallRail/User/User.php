@@ -17,16 +17,15 @@ use RESTKit\Properties\StringProperty;
 
 class User extends DynamicDataObject {
 
-  public function __construct(array $values = array(), RESTClientInterface $client = null) {
+  public function initiate() {
 
-    $this->createProperty('first_name', new StringProperty());
-    $this->createProperty('last_name', new StringProperty());
-    $this->createProperty('email', new StringProperty());
-    $this->createProperty('role', new RoleProperty());
-    $this->createProperty('password', new StringProperty());
-    $this->createProperty('companies', new ClassProperty('CallRail\\Company\\Collection\\CompanyCollection'));
+    $this->createProperty('first_name', new StringProperty())
+      ->createProperty('last_name', new StringProperty())
+      ->createProperty('email', new StringProperty())
+      ->createProperty('role', new RoleProperty())
+      ->createProperty('password', new StringProperty())
+      ->createProperty('companies', new ClassProperty('CallRail\\Company\\Collection\\CompanyCollection'));
 
-    parent::__construct($values, $client);
   }
 
   public function JsonSerialize() {
