@@ -28,6 +28,10 @@ class User extends DynamicDataObject {
 
   }
 
+  public function getCollectionClass() {
+    return 'CallRail\\User\\Collection\\UserCollection';
+  }
+
   public function JsonSerialize() {
     $output = parent::JsonSerialize();
 

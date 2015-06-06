@@ -6,11 +6,11 @@
  * Time: 1:01 AM
  */
 
-namespace CallRail\SourceTracker;
+namespace CallRail\Tracker\Source;
 
 
+use CallRail\Tracker\Source\Properties\SourceProperty;
 use RESTKit\DynamicDataObject;
-use RESTKit\Properties\ClassProperty;
 
 class Source extends DynamicDataObject {
 
@@ -22,6 +22,6 @@ class Source extends DynamicDataObject {
   const TYPE_SEARCH = "search";
 
   public function initiate() {
-    $this->createProperty('type', new ClassProperty('CallRail\\SourceTracker\\Source'));
+    $this->createProperty('type', new SourceProperty());
   }
 }

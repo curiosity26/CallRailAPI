@@ -6,10 +6,9 @@
  * Time: 10:58 PM
  */
 
-namespace CallRail\SourceTracker;
+namespace CallRail\Tracker\Source;
 
 
-use CallRail\SourceTracker\Properties\SourceProperty;
 use RESTKit\DynamicDataObject;
 use RESTKit\Properties\ClassProperty;
 use RESTKit\Properties\StringProperty;
@@ -20,7 +19,7 @@ class SourceTracker extends DynamicDataObject {
     $this->createProperty('name', new StringProperty())
       ->createProperty('call_flow', new ClassProperty('RESTKit\\DynamicDataObject'))
       ->createProperty('tracking_number', new ClassProperty('RESTKit\\DynamicDataObject'))
-      ->createProperty('source', new SourceProperty())
+      ->createProperty('source', new ClassProperty('CallRail\\Tracker\\Source\\Source'))
       ->createProperty('swap_target', new StringProperty());
   }
 }

@@ -24,6 +24,10 @@ class Company extends DynamicDataObject {
 
   }
 
+  public function getCollectionClass() {
+    return 'CallRail\\Company\\Collection\\CompanyCollection';
+  }
+
   public function setName($name) {
     $this->__set('name', $name);
 

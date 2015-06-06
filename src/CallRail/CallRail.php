@@ -119,20 +119,43 @@ class CallRail {
     return $this->sendRequest('sources', $params);
   }
 
+  /**
+   * @param $company_id
+   * @param int $page
+   * @param int $per_page
+   * @return \CallRail\Tracker\Source\Response\SourceTrackerResponse
+   */
   public function sourceTrackers($company_id, $page = 1, $per_page = 100) {
     $params = array('page' => $page, 'per_page' => min($per_page, 1000));
+    $this->request->setResponseClass('CallRail\\Tracker\\Source\\Response\\SourceTrackerResponse');
 
     return $this->sendRequest("companies/$company_id/source_trackers", $params);
   }
 
+  /**
+   * @param $company_id
+   * @param int $page
+   * @param int $per_page
+   * @return \CallRail\Tracker\Session\Response\SessionTrackerResponse
+   */
   public function sessionTrackers($company_id, $page = 1, $per_page = 100) {
     $params = array('page' => $page, 'per_page' => min($per_page, 1000));
+    $this->request->setResponseClass('CallRail\\Tracker\\Session\\Response\\SessionTrackerResponse');
 
     return $this->sendRequest("companies/$company_id/session_trackers", $params);
   }
 
+  /**
+   * @param $company_id
+   * @param $tracker_id
+   * @param null $user_id
+   * @param int $page
+   * @param int $per_page
+   * @return \CallRail\User\Response\UserResponse
+   */
   public function sourceTrackerCallAlerts($company_id, $tracker_id, $user_id = null, $page = 1, $per_page = 100) {
     $params = array('page' => $page, 'per_page' => min($per_page, 1000));
+    $this->request->setResponseClass('CallRail\\User\\Response\\UserResponse');
 
     if (null !== $user_id) {
       return $this->sendRequest("companies/$company_id/source_trackers/$tracker_id/call_alerts/$user_id", $params);
@@ -141,8 +164,17 @@ class CallRail {
     return $this->sendRequest("companies/$company_id/source_trackers/$tracker_id/call_alerts", $params);
   }
 
+  /**
+   * @param $company_id
+   * @param $tracker_id
+   * @param null $user_id
+   * @param int $page
+   * @param int $per_page
+   * @return \CallRail\User\Response\UserResponse
+   */
   public function sourceTrackerSMSAlerts($company_id, $tracker_id, $user_id = null, $page = 1, $per_page = 100) {
     $params = array('page' => $page, 'per_page' => min($per_page, 1000));
+    $this->request->setResponseClass('CallRail\\User\\Response\\UserResponse');
 
     if (null !== $user_id) {
       return $this->sendRequest("companies/$company_id/source_trackers/$tracker_id/sms_alerts/$user_id", $params);
@@ -151,8 +183,17 @@ class CallRail {
     return $this->sendRequest("companies/$company_id/source_trackers/$tracker_id/sms_alerts", $params);
   }
 
+  /**
+   * @param $company_id
+   * @param $tracker_id
+   * @param null $user_id
+   * @param int $page
+   * @param int $per_page
+   * @return \CallRail\User\Response\UserResponse
+   */
   public function sessionTrackerCallAlerts($company_id, $tracker_id, $user_id = null, $page = 1, $per_page = 100) {
     $params = array('page' => $page, 'per_page' => min($per_page, 1000));
+    $this->request->setResponseClass('CallRail\\User\\Response\\UserResponse');
 
     if (null !== $user_id) {
       return $this->sendRequest("companies/$company_id/session_trackers/$tracker_id/call_alerts/$user_id", $params);
@@ -161,8 +202,17 @@ class CallRail {
     return $this->sendRequest("companies/$company_id/session_trackers/$tracker_id/call_alerts", $params);
   }
 
+  /**
+   * @param $company_id
+   * @param $tracker_id
+   * @param null $user_id
+   * @param int $page
+   * @param int $per_page
+   * @return \CallRail\User\Response\UserResponse
+   */
   public function sessionTrackerSMSAlerts($company_id, $tracker_id, $user_id = null, $page = 1, $per_page = 100) {
     $params = array('page' => $page, 'per_page' => min($per_page, 1000));
+    $this->request->setResponseClass('CallRail\\User\\Response\\UserResponse');
 
     if (null !== $user_id) {
       return $this->sendRequest("companies/$company_id/session_trackers/$tracker_id/sms_alerts/$user_id", $params);
@@ -171,9 +221,19 @@ class CallRail {
     return $this->sendRequest("companies/$company_id/session_trackers/$tracker_id/sms_alerts", $params);
   }
 
+  /**
+   * @param null $company_id
+   * @param \DateTime $start_date
+   * @param \DateTime $end_date
+   * @param int $page
+   * @param int $per_page
+   * @return \CallRail\Call\Response\CallResponse
+   */
   public function calls($company_id = null, \DateTime $start_date = null, \DateTime $end_date = null,
                         $page = 1, $per_page = 100) {
     $params = array('page' => $page, 'per_page' => min($per_page, 1000));
+    $this->request->setResponseClass('CallRail\\Call\\Response\\CallResponse')
+    ;
     if (null !== $company_id) {
       $params['company_id'] = $company_id;
     }

@@ -27,11 +27,11 @@
       "type": "package",
       "package": {
         "name": "curiosity26/restkit",
-        "version": "v1.0.11",
+        "version": "v1.0.12",
         "source": {
           "url": "https://github.com/curiosity26/RESTKit.git",
           "type": "git",
-          "reference": "v1.0.11"
+          "reference": "v1.0.12"
         }
       }
     }

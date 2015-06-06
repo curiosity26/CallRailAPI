@@ -6,10 +6,10 @@
  * Time: 1:04 AM
  */
 
-namespace CallRail\SourceTracker\Properties;
+namespace CallRail\Tracker\Source\Properties;
 
 
-use CallRail\SourceTracker\Source;
+use CallRail\Tracker\Source\Source;
 use RESTKit\Properties\StringProperty;
 
 class SourceProperty extends StringProperty {
